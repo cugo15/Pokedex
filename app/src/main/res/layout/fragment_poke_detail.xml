@@ -431,7 +431,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_bold"
-                android:paddingTop=""
                 android:text="HP"
                 android:textColor="@color/grass"
                 app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
