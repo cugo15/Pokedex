@@ -100,7 +100,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAboutPoke" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutType"
@@ -113,7 +113,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip"
+                    android:id="@+id/chipType1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -127,7 +127,7 @@
                     app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
+                    android:id="@+id/chipType2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -290,7 +290,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textViewAboutPoke"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -304,7 +304,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team2"
+                android:id="@+id/pbHP"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
@@ -312,17 +312,17 @@
                 android:max="999"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewHPValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView11"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewHPValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team"
+                android:id="@+id/pbSATK"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
@@ -330,17 +330,17 @@
                 android:max="999"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView14"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSATKValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView14"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewSATKValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team6"
+                android:id="@+id/pbSDEF"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
@@ -348,17 +348,17 @@
                 android:max="999"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSDEFValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView16"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewSDEFValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team7"
+                android:id="@+id/pbSPD"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
@@ -366,17 +366,17 @@
                 android:max="999"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSPDValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView15"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewSPDValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team3"
+                android:id="@+id/pbDEF"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
@@ -384,35 +384,35 @@
                 android:max="999"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewDEFValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView13"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewDEFValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/pb_team4"
+                android:id="@+id/pbATK"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="4dp"
                 android:max="999"
-                android:progress="50"
+                android:progress="250"
                 app:indicatorColor="@color/grass"
-                app:layout_constraintBottom_toBottomOf="@+id/textView17"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewATKValue"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView17"
+                app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewATKValue"
                 app:trackColor="#3374CB48"
                 app:trackCornerRadius="8dp"
                 app:trackThickness="8dp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewSATK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -420,10 +420,10 @@
                 android:text="SATK"
                 android:textColor="@color/grass"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewDEF" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewHP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -431,21 +431,21 @@
                 android:paddingTop=""
                 android:text="HP"
                 android:textColor="@color/grass"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
                 app:layout_constraintTop_toBottomOf="@+id/textViewBaseStats" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textViewSDEF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="SDEF"
                 android:textColor="@color/grass"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSATK" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textViewSPD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -453,31 +453,31 @@
                 android:text="SPD"
                 android:textColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSDEF" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textViewATK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="ATK"
                 android:textColor="@color/grass"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHP" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textViewDEF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="DEF"
                 android:textColor="@color/grass"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                app:layout_constraintEnd_toEndOf="@+id/textViewSATK"
+                app:layout_constraintTop_toBottomOf="@+id/textViewATK" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/textViewHPValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -485,12 +485,12 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView2" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewHP"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewHP" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/textViewDEFValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -498,12 +498,12 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView10" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewDEF"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewDEF" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textViewSATKValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -511,12 +511,12 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSATK"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewSATK" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/textViewSPDValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -524,12 +524,12 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView7" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSPD"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewSPD" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/textViewSDEFValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -537,12 +537,12 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSDEF"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewSDEF" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/textViewATKValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -550,9 +550,9 @@
                 android:paddingStart="4dp"
                 android:text="050"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView9" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewATK"
+                app:layout_constraintStart_toEndOf="@+id/textViewHP"
+                app:layout_constraintTop_toTopOf="@+id/textViewATK" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
