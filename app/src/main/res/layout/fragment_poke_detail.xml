@@ -50,15 +50,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_bold"
         android:shadowColor="@color/black"
         android:text="Bulbasaur"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarPokeDetails"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewArrowBack"
         app:layout_constraintStart_toEndOf="@+id/imageViewArrowBack"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPokeDetails" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewArrowBack" />
 
     <TextView
         android:id="@+id/textViewDetailsPokeID"
