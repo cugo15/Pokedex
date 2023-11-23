@@ -65,7 +65,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     ksp ("com.google.dagger:hilt-compiler:2.48")
-    ksp ("androidx.hilt:hilt-compiler:1.0.0")
+    ksp ("androidx.hilt:hilt-compiler:1.1.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
