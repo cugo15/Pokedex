@@ -21,7 +21,6 @@ import com.cugocumhurgunay.pokedex.utils.downloadUrl
 import com.cugocumhurgunay.pokedex.utils.getPokemonImageUrl
 import com.cugocumhurgunay.pokedex.utils.goTo
 import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

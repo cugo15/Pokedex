@@ -1,19 +1,11 @@
 package com.cugocumhurgunay.pokedex.presentation.viewmodel
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.PopupWindow
-import android.widget.RadioButton
-import androidx.core.content.ContentProviderCompat.requireContext
+
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cugocumhurgunay.pokedex.R
 import com.cugocumhurgunay.pokedex.domain.model.list.PokeListItem
-import com.cugocumhurgunay.pokedex.domain.repository.PokeRepo
 import com.cugocumhurgunay.pokedex.domain.usecase.GetPokemonListUseCase
 import com.cugocumhurgunay.pokedex.utils.Constants.PAGE_SIZE
 import com.cugocumhurgunay.pokedex.utils.Status

@@ -1,8 +1,6 @@
 package com.cugocumhurgunay.pokedex.domain.repository
 
-import com.cugocumhurgunay.pokedex.domain.model.details.PokeDetail
 import com.cugocumhurgunay.pokedex.domain.model.details.PokeDetailItem
-import com.cugocumhurgunay.pokedex.domain.model.details.species.PokeSpecies
 import com.cugocumhurgunay.pokedex.domain.model.details.species.PokemonSpecie
 import com.cugocumhurgunay.pokedex.domain.model.list.PokemonList
 import com.cugocumhurgunay.pokedex.utils.Resource
