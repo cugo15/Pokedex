@@ -16,6 +16,7 @@ import com.cugocumhurgunay.pokedex.utils.Resource
 import com.cugocumhurgunay.pokedex.utils.Status
 import com.cugocumhurgunay.pokedex.utils.getPokemonImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,31 +30,32 @@ class PokeDetailViewModel @Inject constructor (
 
     private val pokeDetailMapper = PokeDetailMapper()
 
-    private val mutablePokeDetail = MutableLiveData<PokeDetail?>()
-    val pokeDetail: LiveData<PokeDetail?> get() = mutablePokeDetail
+    val mutableIsLoading = MutableLiveData<Boolean>()
 
-    private val mutableIsLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> get() = mutableIsLoading
-
-    private val mutableError = MutableLiveData<String?>()
-    val error: LiveData<String?> get() = mutableError
+    val mutableError = MutableLiveData<Boolean>(false)
 
     fun loadData(pokemonID: Int) {
         viewModelScope.launch {
             mutableIsLoading.value = true
+            // Fetch Pokemon details from the use case
             val result = getPokemonDetailsUseCase(pokemonID)
+            // Handle the result based on its status
             when (result.status) {
                 Status.SUCCESS -> {
                     mutableIsLoading.value = false
+                    // Map the result to a presentation model
                     val pokeDetailItem = pokeDetailMapper.mapToPresentation(result.data)
+                    // Update the Pokemon detail live data
                     pokemonDetail.value = pokeDetailItem
+                    // Print the Pokemon detail value (for debugging)
                     println(pokemonDetail.value)
+                    // Check for unexpected errors
                     if (result.data == null || pokeDetailItem == null) {
-                        mutableError.value = "Unexpected error"
+                        mutableError.value = true
                     }
                 }
                 Status.ERROR -> {
-                    mutableError.value = result.message
+                    mutableError.value = true
                     mutableIsLoading.value = false
                 }
                 Status.LOADING -> {
@@ -62,26 +64,31 @@ class PokeDetailViewModel @Inject constructor (
             }
         }
     }
+
     fun loadSpecies(pokemonID: Int) {
         viewModelScope.launch {
             mutableIsLoading.value = true
+
+            // Fetch Pokemon species details from the use case
             val result = getPokeSpeciesUseCase(pokemonID)
+            // Handle the result based on its status
             when (result.status) {
                 Status.SUCCESS -> {
                     mutableIsLoading.value = false
-
+                    // Get English flavor text entries and clean the text
                     val englishFlavorTextList = result?.data?.flavorTextEntries
                         ?.filter { it.language?.name == "en" && it.flavorText?.isNotBlank() == true }
                         ?.mapNotNull { it.flavorText }
                         ?: emptyList()
-
+                    // Random flavor text to show different info every single time and clean it
                     val cleanedText = englishFlavorTextList.randomOrNull()?.replace(Regex("[^\\x20-\\x7E]"), "")
-
+                    // Print the cleaned flavor text (for debugging)
                     print(cleanedText)
+                    // Update the Pokemon flavor text live data
                     pokemonFlavorText.value = cleanedText
                 }
                 Status.ERROR -> {
-                    mutableError.value = result.message
+                    mutableError.value = true
                     mutableIsLoading.value = false
                 }
                 Status.LOADING -> {
@@ -90,4 +97,5 @@ class PokeDetailViewModel @Inject constructor (
             }
         }
     }
+
 }

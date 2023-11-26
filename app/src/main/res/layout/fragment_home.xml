@@ -86,7 +86,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:src="@drawable/sort" />
+            android:src="@drawable/tag" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -121,12 +121,6 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/poke_anim" />
 
-        <TextView
-            android:id="@+id/errorTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="TextView" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

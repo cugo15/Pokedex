@@ -31,6 +31,7 @@ class PokeAdapter () : RecyclerView.Adapter<PokeAdapter.PokeHolder>(){
         val pokeRow = holder.binding
 
         pokeRow.textViewPokeRowName.text = poke.pokemonName
+        //Format the ID
         pokeRow.textViewPokeRowID.text = "#${"%03d".format(poke.pokemonID)}"
         pokeRow.imageViewPokeRow.downloadUrl(poke.imageUrl, placeHolderProgressBar(pokeRow.imageViewPokeRow.context))
 
@@ -42,6 +43,7 @@ class PokeAdapter () : RecyclerView.Adapter<PokeAdapter.PokeHolder>(){
 
     @SuppressLint("NotifyDataSetChanged")
     fun updatePokeList(item: List<PokeListItem>) {
+        // Do not need to send adapter every single time from fragment
         item.let {
             pokeList = item
         }

@@ -42,6 +42,9 @@ fun Navigation.goTo(it: View, id: NavDirections){
     findNavController(it).navigate(id)
 }
 
+fun Navigation.goTo(it: View, id:Int){
+    findNavController(it).navigate(id)
+}
 
 fun getPokemColors(typeNamesList: List<String>): List<String> {
     val lowercaseTypes = typeNamesList.map { it.toLowerCase() }
@@ -67,5 +70,7 @@ fun getPokemColors(typeNamesList: List<String>): List<String> {
     )
     return lowercaseTypes.mapNotNull { typeColorMap[it] } // Filter out null values (types not found) and return the list
 }
+
+
 
 

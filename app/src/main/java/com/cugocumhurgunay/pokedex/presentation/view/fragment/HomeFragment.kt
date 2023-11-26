@@ -39,10 +39,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        viewModel.loadData()
         initListener()
-
+        binding.cardViewSort.setOnClickListener {
+            showPopupMenu(it)
+        }
         binding.rvPoke.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            //Paging
+            //To load data with swipe bottom of the recyclerview
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
@@ -51,11 +54,10 @@ class HomeFragment : Fragment() {
 
                 val lastVisibleItemPosition = lastVisibleItemPositions.maxOrNull() ?: 0
                 val totalItemCount = layoutManager.itemCount
-                //If you can see last item completly then load data auto
+
+                // If you can see the last item completely, then load data automatically
                 if (lastVisibleItemPosition == totalItemCount - 1) {
-                    viewModel.loadData()
-                    rb1Checked = true
-                    rb2Checked = false
+                        viewModel.loadData()
                 }
             }
         })
@@ -63,26 +65,17 @@ class HomeFragment : Fragment() {
         binding.searchViewPoke.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextChange(newText: String): Boolean {
                 viewModel.searchPokemonList(newText)
-                rb1Checked = true
-                rb2Checked = false
                 return true
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.searchPokemonList(query)
-                rb1Checked = true
-                rb2Checked = false
-                return true
+
+                return false
             }
         })
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: HomeViewModel by viewModels()
-        viewModel = tempViewModel
-    }
     private fun initView() {
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         binding.rvPoke.layoutManager = layoutManager
@@ -92,28 +85,36 @@ class HomeFragment : Fragment() {
 
         viewModel.searchedPokemonList.observe(viewLifecycleOwner){
             pokeAdapter.updatePokeList(it)
+            if (rb2Checked) {
+                viewModel.orderPokemonListByName()
+            }
         }
+
         viewModel.pokemonList.observe(viewLifecycleOwner){
             pokeAdapter.updatePokeList(it)
+            if (rb2Checked) {
+                viewModel.orderPokemonListByName()
+            }
         }
+
         viewModel.filtredPokemonList.observe(viewLifecycleOwner){
             pokeAdapter.updatePokeList(it)
+
         }
-        binding.cardViewSort.setOnClickListener {
-            showPopupMenu(it)
-        }
+
         viewModel.mutableIsLoading.observe(viewLifecycleOwner) {
             it?.let {
                 if (it){
+                    // If data is loading show poke progress ball
                     binding.progressPoke.visibility = View.VISIBLE
                     binding.rvPoke.alpha = 0.2F
-                    binding.errorTxt.visibility = View.GONE
                 } else {
                     binding.progressPoke.visibility = View.GONE
                     binding.rvPoke.alpha = 1F
                 }
             }
         }
+
         viewModel.mutableError.observe(viewLifecycleOwner) { isError ->
             if (isError == true) {
                 val errorMessage = "An unknown error occurred"
@@ -138,15 +139,10 @@ class HomeFragment : Fragment() {
         }
 
     }
-
-    override fun onResume() {
-        super.onResume()
-        val primaryColor = ContextCompat.getColor(requireContext(), R.color.primary)
-        activity?.window?.statusBarColor = primaryColor
-    }
     private fun showPopupMenu(anchorView: View) {
+        //Pop up menu to sort data
         val popupView = LayoutInflater.from(anchorView.context).inflate(R.layout.pop_menu_sort, null)
-        val binding = PopMenuSortBinding.bind(popupView)
+        val bind = PopMenuSortBinding.bind(popupView)
         val popupWindow = PopupWindow(
             popupView,
             ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -154,25 +150,43 @@ class HomeFragment : Fragment() {
             true
         )
 
-        binding.rb1.isChecked = rb1Checked
-        binding.rb2.isChecked = rb2Checked
-        binding.rb1.setOnClickListener {
+        bind.rb1.isChecked = rb1Checked
+        bind.rb2.isChecked = rb2Checked
+        bind.rb1.setOnClickListener {
+            //To understand that radio buttons selected
             rb1Checked = true
             rb2Checked = false
-            viewModel.loadData()
+            binding.imageViewSort.setImageResource(R.drawable.tag)
+            viewModel.orderPokemonListByID()
             Toast.makeText(anchorView.context, "Sorted by Number", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
         }
 
-        binding.rb2.setOnClickListener {
+        bind.rb2.setOnClickListener {
+            //To understand that radio buttons selected
             rb1Checked = false
             rb2Checked = true
+            binding.imageViewSort.setImageResource(R.drawable.sort)
             viewModel.orderPokemonListByName()
             Toast.makeText(anchorView.context, "Sorted by Name", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
         }
 
         popupWindow.showAsDropDown(anchorView)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: HomeViewModel by viewModels()
+        viewModel = tempViewModel
+        // I call data here if i comeback from details fragment I do not want to load data again
+        viewModel.loadData()
+    }
+    override fun onResume() {
+        super.onResume()
+        val primaryColor = ContextCompat.getColor(requireContext(), R.color.primary)
+        //If I comeback from details fragment change status bar color back
+        activity?.window?.statusBarColor = primaryColor
     }
 
 }
