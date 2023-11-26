@@ -33,7 +33,7 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     val mutableError = MutableLiveData<Boolean?>(false)
 
     fun loadData() {
-        viewModelScope.launch {Dispatchers.IO
+        viewModelScope.launch {
             // Check if there is not searching at the moment and the end is not reached
             if (!matched && !endReached.value!!) {
                 mutableIsLoading.value = true
@@ -72,7 +72,7 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     }
 
     fun searchPokemonList(query: String) {
-        viewModelScope.launch {Dispatchers.IO
+        viewModelScope.launch {
             val isQueryNumeric = query.isDigitsOnly()
             val filteredList = pokemonList.value
                 ?.let {
@@ -88,7 +88,7 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
                 } ?: emptyList() // If pokemonList.value is null, return an empty list
 
             // Check if the filtered list is different from the original pokemon list
-            if (filteredList != pokemonList.value) {
+            if (filteredList.size != pokemonList.value!!.size) {
                 // If there is a match with the query, update the searched Pokemon list
                 searchedPokemonList.value = ArrayList(filteredList)
                 matched = true
@@ -101,11 +101,11 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     }
 
     fun orderPokemonListByName() {
-        viewModelScope.launch {Dispatchers.IO
+        viewModelScope.launch {
             filtredPokemonList.value = pokemonList.value?.sortedBy { it.pokemonName }
         }
     }
-    fun orderPokemonListByID() {Dispatchers.IO
+    fun orderPokemonListByID() {
         viewModelScope.launch {
             filtredPokemonList.value = pokemonList.value?.sortedBy { it.pokemonID }
         }

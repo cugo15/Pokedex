@@ -27,7 +27,7 @@ class PokeDetailViewModel @Inject constructor (
     val mutableError = MutableLiveData<Boolean>(false)
 
     fun loadData(pokemonID: Int) {
-        viewModelScope.launch {Dispatchers.IO
+        viewModelScope.launch {
             mutableIsLoading.value = true
             // Fetch Pokemon details from the use case
             val result = getPokemonDetailsUseCase(pokemonID)
@@ -54,7 +54,7 @@ class PokeDetailViewModel @Inject constructor (
     }
 
     fun loadSpecies(pokemonID: Int) {
-        viewModelScope.launch {Dispatchers.IO
+        viewModelScope.launch {
             mutableIsLoading.value = true
 
             // Fetch Pokemon species details from the use case
