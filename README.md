@@ -1,3 +1,5 @@
+## Description
+This application is final project of the Pazarama Android Bootcamp, Kotlin-powered Android app using PokeAPI for a Pokemon adventure [PokeApi](https://pokeapi.co).
 # Pokedex
 | Main Screen | Main Screen Sort | Main Screen Search|
 | ----------- | ---------------- |------------------ | 
