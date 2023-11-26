@@ -102,7 +102,8 @@ class PokeDetailFragment : Fragment() {
             }
         }
         binding.imageViewArrowBack.setOnClickListener {
-            Navigation.goTo(it,R.id.detailToHome)
+            val fragmentManager = requireActivity().supportFragmentManager
+                fragmentManager.popBackStack()
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
