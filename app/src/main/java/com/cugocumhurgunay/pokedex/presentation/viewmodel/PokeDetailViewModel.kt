@@ -16,6 +16,7 @@ import com.cugocumhurgunay.pokedex.utils.Resource
 import com.cugocumhurgunay.pokedex.utils.Status
 import com.cugocumhurgunay.pokedex.utils.getPokemonImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -35,7 +36,7 @@ class PokeDetailViewModel @Inject constructor (
     val mutableError = MutableLiveData<Boolean>(false)
 
     fun loadData(pokemonID: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch {Dispatchers.IO
             mutableIsLoading.value = true
             // Fetch Pokemon details from the use case
             val result = getPokemonDetailsUseCase(pokemonID)
@@ -66,7 +67,7 @@ class PokeDetailViewModel @Inject constructor (
     }
 
     fun loadSpecies(pokemonID: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch {Dispatchers.IO
             mutableIsLoading.value = true
 
             // Fetch Pokemon species details from the use case

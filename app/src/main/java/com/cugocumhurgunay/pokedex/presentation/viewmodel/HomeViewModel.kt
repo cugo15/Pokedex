@@ -20,6 +20,7 @@ import com.cugocumhurgunay.pokedex.utils.Status
 import com.cugocumhurgunay.pokedex.utils.extractPokemonId
 import com.cugocumhurgunay.pokedex.utils.getPokemonImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
@@ -40,7 +41,7 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     val mutableError = MutableLiveData<Boolean?>(false)
 
     fun loadData() {
-        viewModelScope.launch {
+        viewModelScope.launch {Dispatchers.IO
             // Check if there is not searching at the moment and the end is not reached
             if (!matched && !endReached.value!!) {
                 mutableIsLoading.value = true
@@ -79,7 +80,7 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     }
 
     fun searchPokemonList(query: String) {
-        viewModelScope.launch {
+        viewModelScope.launch {Dispatchers.IO
             val isQueryNumeric = query.isDigitsOnly()
             val filteredList = pokemonList.value
                 ?.let {
@@ -108,11 +109,11 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     }
 
     fun orderPokemonListByName() {
-        viewModelScope.launch {
+        viewModelScope.launch {Dispatchers.IO
             filtredPokemonList.value = pokemonList.value?.sortedBy { it.pokemonName }
         }
     }
-    fun orderPokemonListByID() {
+    fun orderPokemonListByID() {Dispatchers.IO
         viewModelScope.launch {
             filtredPokemonList.value = pokemonList.value?.sortedBy { it.pokemonID }
         }

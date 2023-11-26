@@ -61,13 +61,12 @@
             android:id="@+id/searchViewPoke"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryBackground="@color/transparent"
             android:closeIcon="@drawable/close"
             android:iconifiedByDefault="false"
+            android:queryBackground="@color/transparent"
             android:queryHint="Search Pokemon"
             android:searchHintIcon="@drawable/search"
-            android:searchIcon="@drawable/search"
-             />
+            android:searchIcon="@drawable/search" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

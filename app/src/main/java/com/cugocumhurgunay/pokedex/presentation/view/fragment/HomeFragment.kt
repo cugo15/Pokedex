@@ -1,9 +1,11 @@
 package com.cugocumhurgunay.pokedex.presentation.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -65,6 +67,11 @@ class HomeFragment : Fragment() {
         binding.searchViewPoke.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextChange(newText: String): Boolean {
                 viewModel.searchPokemonList(newText)
+                if (newText.isNullOrEmpty()){
+                    val inputMethodManager =
+                        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(binding.searchViewPoke.windowToken, 0)
+                }
                 return true
             }
 
@@ -73,6 +80,7 @@ class HomeFragment : Fragment() {
                 return false
             }
         })
+
 
     }
 
