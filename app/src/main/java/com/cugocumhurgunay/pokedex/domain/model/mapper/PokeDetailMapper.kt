@@ -5,33 +5,26 @@ import com.cugocumhurgunay.pokedex.domain.model.details.PokeDetailItem
 import com.cugocumhurgunay.pokedex.utils.getPokemColors
 import com.cugocumhurgunay.pokedex.utils.getPokemonImageUrl
 
-class PokeDetailMapper {
-    fun mapToPresentation(pokeDetail: PokeDetail?): PokeDetailItem? {
-        return pokeDetail?.let {
-            val typeNamesList = it.types.map { type -> type.type.name.capitalize() }
-            val pokeMovesString = it.abilities.joinToString(separator = "\n") { ability -> ability.ability.name.capitalize() }
-            val pokeStatsMap = it.stats.associate { stat ->
-                stat.stat.name to String.format("%03d", stat.baseStat)
-            }
 
-
-
-
-
-
-            PokeDetailItem(
-                pokemonID = it.id,
-                pokemonImageUrl = getPokemonImageUrl(it.id),
-                pokemonName = it.name.capitalize(),
+    fun PokeDetail.mapToPresentation(): PokeDetailItem {
+        val typeNamesList = types.map { type -> type.type.name.capitalize() }
+        val pokeMovesString = abilities.joinToString(separator = "\n") { ability -> ability.ability.name.capitalize() }
+        val pokeStatsMap = stats.associate { stat ->
+            stat.stat.name to String.format("%03d", stat.baseStat)
+        }
+        return PokeDetailItem(
+                pokemonID = id,
+                pokemonImageUrl = getPokemonImageUrl(id),
+                pokemonName = name.capitalize(),
                 typeNamesList = typeNamesList,
-                pokemonWeight = it.weight.toString(),
-                pokemonHeight = it.height.toString(),
+                pokemonWeight = weight.toString(),
+                pokemonHeight = height.toString(),
                 pokemonMoves = pokeMovesString,
                 pokemonStatsMap = pokeStatsMap,
                 color = getPokemColors(typeNamesList)
             )
         }
-    }
 
 
-}
+
+

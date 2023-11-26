@@ -9,7 +9,6 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cugocumhurgunay.pokedex.R
-import com.cugocumhurgunay.pokedex.domain.model.mapper.PokeDetailMapper
 
 fun ImageView.downloadUrl(url: String?, progressDrawable: CircularProgressDrawable){
     val options = RequestOptions()
