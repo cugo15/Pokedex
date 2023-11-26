@@ -72,6 +72,9 @@ class HomeFragment : Fragment() {
                         requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputMethodManager.hideSoftInputFromWindow(binding.searchViewPoke.windowToken, 0)
                 }
+                rb2Checked = false
+                rb1Checked = true
+                binding.imageViewSort.setImageResource(R.drawable.tag)
                 return true
             }
 
