@@ -93,9 +93,6 @@ class HomeFragment : Fragment() {
 
         viewModel.searchedPokemonList.observe(viewLifecycleOwner){
             pokeAdapter.updatePokeList(it)
-            if (rb2Checked) {
-                viewModel.orderPokemonListByName()
-            }
         }
 
         viewModel.pokemonList.observe(viewLifecycleOwner){
