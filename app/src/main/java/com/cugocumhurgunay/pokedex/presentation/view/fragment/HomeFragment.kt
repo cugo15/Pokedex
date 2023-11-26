@@ -16,6 +16,7 @@ import com.cugocumhurgunay.pokedex.databinding.FragmentHomeBinding
 import com.cugocumhurgunay.pokedex.databinding.PopMenuSortBinding
 import com.cugocumhurgunay.pokedex.presentation.view.adapter.PokeAdapter
 import com.cugocumhurgunay.pokedex.presentation.viewmodel.HomeViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,18 +40,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         viewModel.loadData()
-        viewModel.searchedPokemonList.observe(viewLifecycleOwner){
-            pokeAdapter.updatePokeList(it)
-        }
-        viewModel.pokemonList.observe(viewLifecycleOwner){
-            pokeAdapter.updatePokeList(it)
-        }
-        viewModel.filtredPokemonList.observe(viewLifecycleOwner){
-            pokeAdapter.updatePokeList(it)
-        }
-        binding.cardViewSort.setOnClickListener {
-            showPopupMenu(it)
-        }
+        initListener()
+
         binding.rvPoke.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -58,12 +49,10 @@ class HomeFragment : Fragment() {
                 val layoutManager = recyclerView.layoutManager as StaggeredGridLayoutManager
                 val lastVisibleItemPositions = layoutManager.findLastCompletelyVisibleItemPositions(null)
 
-                // Choose the maximum index from the array, as it represents the last visible item
                 val lastVisibleItemPosition = lastVisibleItemPositions.maxOrNull() ?: 0
                 val totalItemCount = layoutManager.itemCount
-
+                //If you can see last item completly then load data auto
                 if (lastVisibleItemPosition == totalItemCount - 1) {
-                    // You have reached the last item. Trigger data loading.
                     viewModel.loadData()
                     rb1Checked = true
                     rb2Checked = false
@@ -72,14 +61,14 @@ class HomeFragment : Fragment() {
         })
 
         binding.searchViewPoke.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener{
-            override fun onQueryTextChange(newText: String): Boolean {//Harf girdikçe ve sildikçe
+            override fun onQueryTextChange(newText: String): Boolean {
                 viewModel.searchPokemonList(newText)
                 rb1Checked = true
                 rb2Checked = false
                 return true
             }
 
-            override fun onQueryTextSubmit(query: String): Boolean {//Arama iconuna bastığında
+            override fun onQueryTextSubmit(query: String): Boolean {
                 viewModel.searchPokemonList(query)
                 rb1Checked = true
                 rb2Checked = false
@@ -98,6 +87,56 @@ class HomeFragment : Fragment() {
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         binding.rvPoke.layoutManager = layoutManager
         binding.rvPoke.adapter = pokeAdapter
+    }
+    private fun initListener(){
+
+        viewModel.searchedPokemonList.observe(viewLifecycleOwner){
+            pokeAdapter.updatePokeList(it)
+        }
+        viewModel.pokemonList.observe(viewLifecycleOwner){
+            pokeAdapter.updatePokeList(it)
+        }
+        viewModel.filtredPokemonList.observe(viewLifecycleOwner){
+            pokeAdapter.updatePokeList(it)
+        }
+        binding.cardViewSort.setOnClickListener {
+            showPopupMenu(it)
+        }
+        viewModel.mutableIsLoading.observe(viewLifecycleOwner) {
+            it?.let {
+                if (it){
+                    binding.progressPoke.visibility = View.VISIBLE
+                    binding.rvPoke.alpha = 0.2F
+                    binding.errorTxt.visibility = View.GONE
+                } else {
+                    binding.progressPoke.visibility = View.GONE
+                    binding.rvPoke.alpha = 1F
+                }
+            }
+        }
+        viewModel.mutableError.observe(viewLifecycleOwner) { isError ->
+            if (isError == true) {
+                val errorMessage = "An unknown error occurred"
+                val snackbarDuration = if (viewModel.pokemonList.value.isNullOrEmpty()) {
+                    // If there is no item in recyclerView duration must be indefinite
+                    // Because user can not trigger loadData() with any other way
+                    Snackbar.LENGTH_INDEFINITE
+                } else {
+                    // If there are items in recyclerView duration must be short
+                    // Because user can trigger loadData() if swipe recyclerView again
+                    Snackbar.LENGTH_SHORT
+                }
+                view?.let { it1 ->
+                    Snackbar.make(it1, errorMessage, snackbarDuration).apply {
+                        setActionTextColor(resources.getColor(R.color.primary))
+                        setAction("Retry") {
+                            viewModel.loadData()
+                        }
+                    }.show()
+                }
+            }
+        }
+
     }
 
     override fun onResume() {
@@ -121,7 +160,7 @@ class HomeFragment : Fragment() {
             rb1Checked = true
             rb2Checked = false
             viewModel.loadData()
-            Toast.makeText(anchorView.context, "Option 1 selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(anchorView.context, "Sorted by Number", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
         }
 
@@ -129,7 +168,7 @@ class HomeFragment : Fragment() {
             rb1Checked = false
             rb2Checked = true
             viewModel.orderPokemonListByName()
-            Toast.makeText(anchorView.context, "Option 2 selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(anchorView.context, "Sorted by Name", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
         }
 

@@ -68,8 +68,7 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
+    implementation ("com.airbnb.android:lottie:6.1.0")
 
-
-    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
 
 }

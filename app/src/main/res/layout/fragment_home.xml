@@ -90,6 +90,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
@@ -100,7 +101,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPoke"
@@ -109,5 +110,23 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/progressPoke"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="4dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/poke_anim" />
+
+        <TextView
+            android:id="@+id/errorTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TextView" />
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

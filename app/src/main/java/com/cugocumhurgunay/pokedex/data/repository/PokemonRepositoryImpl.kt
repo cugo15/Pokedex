@@ -15,12 +15,12 @@ class PokemonRepositoryImpl @Inject constructor (private val pokemonAPI: Pokemon
             if (response.isSuccessful) {
                 response.body()?.let {
                     return@let Resource.success(it)
-                } ?: Resource.error("Body boş geldi!",null)
+                } ?: Resource.error("An unknown error occured",null)
             } else {
-                Resource.error("Response successful değil!",null)
+                Resource.error("An unknown error occured",null)
             }
         } catch (e: Exception) {
-            Resource.error("Bütün olay patladı!",null)
+            Resource.error("An unknown error occured",null)
         }
     }
 
@@ -30,12 +30,12 @@ class PokemonRepositoryImpl @Inject constructor (private val pokemonAPI: Pokemon
             if (response.isSuccessful) {
                 response.body()?.let {
                     return@let Resource.success(it)
-                } ?: Resource.error("Body boş geldi!",null)
+                } ?: Resource.error("An unknown error occured",null)
             } else {
-                Resource.error("Response successful değil!",null)
+                Resource.error("An unknown error occured",null)
             }
         } catch (e: Exception) {
-            Resource.error("Bütün olay patladı!",null)
+            Resource.error("An unknown error occured",null)
         }
     }
 
@@ -45,12 +45,12 @@ class PokemonRepositoryImpl @Inject constructor (private val pokemonAPI: Pokemon
             if (response.isSuccessful) {
                 response.body()?.let {
                     return@let Resource.success(it)
-                } ?: Resource.error("Body boş geldi!",null)
+                } ?: Resource.error("An unknown error occured",null)
             } else {
-                Resource.error("Response successful değil!",null)
+                Resource.error("An unknown error occured",null)
             }
         } catch (e: Exception) {
-            Resource.error("Bütün olay patladı!",null)
+            Resource.error("An unknown error occured",null)
         }
     }
 }

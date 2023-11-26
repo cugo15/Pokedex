@@ -28,7 +28,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPokemonListUseCase) : ViewModel() {
 
     val pokemonList = MutableLiveData<List<PokeListItem>>()
-    val endReached = MutableLiveData<Boolean>()
+    val endReached = MutableLiveData<Boolean>(false)
     val searchedPokemonList = MutableLiveData<List<PokeListItem>>()
     val filtredPokemonList = MutableLiveData<List<PokeListItem>>()
 
@@ -36,13 +36,13 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
     private var curPage = 0
 
     val mutableIsLoading = MutableLiveData<Boolean>(false)
-    val mutableError = MutableLiveData<String?>("Enter a query")
+    val mutableError = MutableLiveData<Boolean?>(false)
 
     fun loadData() {
         viewModelScope.launch {
-            if (searchedPokemonList.value.isNullOrEmpty()) {
-                delay(300)
+            if (searchedPokemonList.value.isNullOrEmpty()&&!endReached.value!!) {
                 mutableIsLoading.value = true
+                delay(1000)
                 val result = getPokemonListUseCase(PAGE_SIZE, curPage * PAGE_SIZE)
                 when (result.status) {
                     Status.SUCCESS -> {
@@ -54,14 +54,16 @@ class HomeViewModel @Inject constructor(private val getPokemonListUseCase:GetPok
                         }
                         curPage++
                         mutableIsLoading.value = false
+                        mutableError.value = false
                         pokemonList.value = (pokemonList.value ?: emptyList()) + pokedexEntries
                     }
                     Status.ERROR -> {
-                        mutableError.value = result.message
+                        mutableError.value = true
                         mutableIsLoading.value = false
                     }
                     Status.LOADING -> {
                         mutableIsLoading.value = true
+                        mutableError.value = false
                     }
                 }
             }

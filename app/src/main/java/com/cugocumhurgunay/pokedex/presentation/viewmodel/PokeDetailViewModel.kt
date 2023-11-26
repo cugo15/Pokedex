@@ -48,8 +48,6 @@ class PokeDetailViewModel @Inject constructor (
                     val pokeDetailItem = pokeDetailMapper.mapToPresentation(result.data)
                     pokemonDetail.value = pokeDetailItem
                     println(pokemonDetail.value)
-                    Log.d("YourTag", "Pokemon Detail: $pokeDetailItem")
-
                     if (result.data == null || pokeDetailItem == null) {
                         mutableError.value = "Unexpected error"
                     }
@@ -81,7 +79,6 @@ class PokeDetailViewModel @Inject constructor (
 
                     print(cleanedText)
                     pokemonFlavorText.value = cleanedText
-
                 }
                 Status.ERROR -> {
                     mutableError.value = result.message
