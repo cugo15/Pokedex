@@ -12,3 +12,4 @@
 | ![Details](https://github.com/cugo15/Pokedex/assets/70814057/767d4010-0407-470d-a04e-8b1f6fa9d53d) | ![Details](https://github.com/cugo15/Pokedex/assets/70814057/5d442a8a-4f0f-40e8-9c62-f4ed1cfcd8e3) | ![Details](https://github.com/cugo15/Pokedex/assets/70814057/62af5783-8492-4234-a4c7-62b4ba53fb30)| ![Details](https://github.com/cugo15/Pokedex/assets/70814057/1f02b853-fcfb-420d-b873-d1ef87d17b11) 
 
 
+https://github.com/cugo15/Pokedex/assets/70814057/efc5d9c9-c4ae-4147-8306-5bb6d62dcd40
