@@ -14,6 +14,9 @@ Integrated libraries:
 - Glide for efficient image handling
 - Lottie for animated GIFs
 
+Unit Test:
+- Trurh for testing
+
 # Pokedex
 | Main Screen | Main Screen Sort | Main Screen Search|
 | ----------- | ---------------- |------------------ | 
