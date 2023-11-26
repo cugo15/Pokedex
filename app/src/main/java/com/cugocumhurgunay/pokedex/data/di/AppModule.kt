@@ -3,8 +3,7 @@ package com.cugocumhurgunay.pokedex.data.di
 import com.cugocumhurgunay.pokedex.data.repository.PokemonRepositoryImpl
 import com.cugocumhurgunay.pokedex.data.retrofit.ApiUtils
 import com.cugocumhurgunay.pokedex.data.retrofit.service.PokemonAPI
-import com.cugocumhurgunay.pokedex.domain.repository.PokemonRepository
-import com.cugocumhurgunay.pokedex.domain.usecase.PokemonUseCase
+import com.cugocumhurgunay.pokedex.domain.repository.PokeRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,11 +12,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides
-    fun providePokemonRepository(useCase: PokemonUseCase) = PokemonRepositoryImpl(useCase) as PokemonRepository
+    fun providePokemonRepository(pokemonAPI: PokemonAPI) : PokeRepo {
+        return PokemonRepositoryImpl(pokemonAPI)
+    }
 
     @Provides
     @Singleton

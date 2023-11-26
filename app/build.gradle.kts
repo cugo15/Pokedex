@@ -41,7 +41,6 @@ android {
         jvmTarget = "17"
     }
 }
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -68,5 +67,9 @@ dependencies {
     ksp ("androidx.hilt:hilt-compiler:1.1.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+
+
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
 
 }

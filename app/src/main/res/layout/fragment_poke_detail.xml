@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pokeDetailLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grass"
@@ -17,8 +18,8 @@
         android:alpha="0.1"
         android:src="@drawable/pokeball"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.6" />
 
     <androidx.appcompat.widget.Toolbar
@@ -96,14 +97,13 @@
                 android:id="@+id/textViewBaseStats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Base Stats"
                 android:textColor="@color/grass"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAboutPoke" />
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutType"
@@ -121,11 +121,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:backgroundTint="@color/grass"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Grass"
                     android:textAppearance="@style/chipText"
                     android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/grass"
                     app:chipCornerRadius="30dp"
                     app:chipStrokeWidth="0dp" />
 
@@ -135,11 +135,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:backgroundTint="@color/poison"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Poison"
                     android:textAppearance="@style/chipText"
                     android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/fairy"
                     app:chipCornerRadius="30dp"
                     app:chipStrokeWidth="0dp" />
             </LinearLayout>
@@ -148,7 +148,7 @@
                 android:id="@+id/textViewAbout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="About"
                 android:textColor="@color/grass"
@@ -162,7 +162,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -171,7 +171,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewAbout">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -211,8 +211,14 @@
 
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="1dp"
+                    android:layout_height="48dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -253,32 +259,35 @@
 
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="1dp"
+                    android:layout_height="48dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
 
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:orientation="horizontal">
-
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp">
 
                         <TextView
                             android:id="@+id/textViewMoves"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins"
                             android:gravity="center"
                             android:text="Chlorophyll\nOvergrow"
                             android:textAlignment="center"
                             android:textColor="@color/gray_dark" />
-                    </LinearLayout>
+                    </ScrollView>
 
                     <TextView
                         android:id="@+id/textView5"
@@ -290,34 +299,21 @@
                         android:textSize="12sp" />
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewAboutPoke"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppins"
-                android:text="There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
-                android:textColor="@color/gray_dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            </LinearLayout>
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/pbHP"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewHPValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewHPValue"
                 app:trackColor="#3374CB48"
@@ -329,13 +325,13 @@
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSATKValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewSATKValue"
                 app:trackColor="#3374CB48"
@@ -347,13 +343,13 @@
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSDEFValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewSDEFValue"
                 app:trackColor="#3374CB48"
@@ -365,13 +361,13 @@
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSPDValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewSPDValue"
                 app:trackColor="#3374CB48"
@@ -383,13 +379,13 @@
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="50"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewDEFValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewDEFValue"
                 app:trackColor="#3374CB48"
@@ -401,13 +397,13 @@
                 android:layout_width="0dp"
                 android:layout_height="4dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="4dp"
-                android:max="999"
+                android:max="200"
                 android:progress="250"
                 app:indicatorColor="@color/grass"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewATKValue"
-                app:layout_constraintEnd_toEndOf="@+id/textViewAboutPoke"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewHPValue"
                 app:layout_constraintTop_toTopOf="@+id/textViewATKValue"
                 app:trackColor="#3374CB48"
@@ -429,7 +425,7 @@
                 android:id="@+id/textViewHP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="HP"
                 android:textColor="@color/grass"
@@ -480,12 +476,12 @@
 
             <TextView
                 android:id="@+id/textViewHPValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
                 android:text="050"
+                android:textAlignment="textEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewHP"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
@@ -493,12 +489,13 @@
 
             <TextView
                 android:id="@+id/textViewDEFValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
+
                 android:text="050"
+                android:textAlignment="textEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewDEF"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
@@ -506,12 +503,13 @@
 
             <TextView
                 android:id="@+id/textViewSATKValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
+
                 android:text="050"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSATK"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
@@ -519,12 +517,13 @@
 
             <TextView
                 android:id="@+id/textViewSPDValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
                 android:text="050"
+                android:textAlignment="textEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSPD"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
@@ -532,12 +531,13 @@
 
             <TextView
                 android:id="@+id/textViewSDEFValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
                 android:text="050"
+                android:textAlignment="textEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewSDEF"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
@@ -545,16 +545,38 @@
 
             <TextView
                 android:id="@+id/textViewATKValue"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins"
-                android:paddingStart="4dp"
+
                 android:text="050"
+                android:textAlignment="textEnd"
                 android:textColor="@color/gray_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewATK"
                 app:layout_constraintStart_toEndOf="@+id/textViewHP"
                 app:layout_constraintTop_toTopOf="@+id/textViewATK" />
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <TextView
+                    android:id="@+id/textViewAboutPoke"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+
+                    android:textColor="@color/gray_dark" />
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

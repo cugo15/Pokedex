@@ -20,7 +20,10 @@
         android:label="fragment_poke_detail"
         tools:layout="@layout/fragment_poke_detail" >
         <argument
-            android:name="poke_name"
-            app:argType="string" />
+            android:name="poke_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/detailToHome"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

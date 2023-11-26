@@ -11,5 +11,7 @@
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
+
+
     <style name="Theme.Pokedex" parent="Base.Theme.Pokedex" />
 </resources>
