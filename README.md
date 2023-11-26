@@ -1,5 +1,19 @@
-## Description
+# Description
 This application is final project of the Pazarama Android Bootcamp, Kotlin-powered Android app using PokeAPI for a Pokemon adventure [PokeApi](https://pokeapi.co).
+# Technologies and Libraries
+Modern technology stack:
+- View Binding for efficient UI interactions
+- Coroutines for managing asynchronous tasks
+- ViewModel for UI data and lifecycle management
+- Navigation for streamlined screen transitions
+- Hilt for dependency injection
+- Ensures clean architecture, maintainability, and a seamless user experience
+
+Integrated libraries:
+- Retrofit for web service data retrieval
+- Glide for efficient image handling
+- Lottie for animated GIFs
+
 # Pokedex
 | Main Screen | Main Screen Sort | Main Screen Search|
 | ----------- | ---------------- |------------------ | 
