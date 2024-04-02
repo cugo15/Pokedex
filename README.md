@@ -9,7 +9,7 @@ Modern technology stack:
 - Hilt for dependency injection
 - Ensures clean architecture, maintainability, and a seamless user experience
 
-Integrated libraries:
+Integrated libraries :
 - Retrofit for web service data retrieval
 - Glide for efficient image handling
 - Lottie for animated GIFs
